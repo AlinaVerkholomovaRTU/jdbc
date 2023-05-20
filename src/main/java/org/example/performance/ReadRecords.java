@@ -1,4 +1,4 @@
-package main.java.org.example.performance;
+package org.example.performance;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

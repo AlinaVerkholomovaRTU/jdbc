@@ -1,4 +1,4 @@
-package main.java.org.example.aggregate_functions;
+package org.example.aggregate_functions;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

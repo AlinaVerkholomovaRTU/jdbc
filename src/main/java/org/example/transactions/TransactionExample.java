@@ -1,4 +1,4 @@
-package main.java.org.example.transactions;
+package org.example.transactions;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
