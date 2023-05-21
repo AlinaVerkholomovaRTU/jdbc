@@ -6,13 +6,10 @@ import java.sql.Statement;
 
 public class ConstraintExample {
     public static void main(String[] args) {
-//        String jdbcUrl = "jdbc:postgresql://localhost:5432/JDBC";
-//        String user = "alinaverkholomova";
-//        String pass = "1Revan@loves8996";
 
         String jdbcUrl = "jdbc:mysql://localhost:3306/hibernate";
         String user = "root";
-        String pass = "kakosik1";
+        String pass = "password";
 
         try {
             System.out.println("Connecting to database" + jdbcUrl);
