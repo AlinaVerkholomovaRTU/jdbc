@@ -4,12 +4,29 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Random;
 
 import static java.lang.System.currentTimeMillis;
 
 public class AggregateFunctionsExample {
+
+    public static void insertData(Connection connection) throws SQLException {
+        Random rand = new Random();
+
+        PreparedStatement stmtPrepared = connection.prepareStatement(
+                "INSERT INTO employee (name, salary) VALUES (?, ?)");
+
+        int i = 1;
+        while (i < 1001) {
+            int salaryRand = rand.nextInt(5001);
+            stmtPrepared.setString(1, "Andrew");
+            stmtPrepared.setInt(2, salaryRand);
+            stmtPrepared.executeUpdate();
+            i++;
+        }
+    }
     public static void main(String[] args) {
 
         String jdbcUrl = "jdbc:postgresql://localhost:5432/JDBC";
@@ -22,19 +39,8 @@ public class AggregateFunctionsExample {
 
             Connection connection = DriverManager.getConnection(jdbcUrl, user, pass);
 
-            Random rand = new Random();
+            insertData(connection);
 
-            PreparedStatement stmtPrepared = connection.prepareStatement(
-                    "INSERT INTO employee (name, salary) VALUES (?, ?)");
-
-            int i = 1;
-            while (i < 1001) {
-                int salaryRand = rand.nextInt(5001);
-                stmtPrepared.setString(1, "Andrew");
-                stmtPrepared.setInt(2, salaryRand);
-                stmtPrepared.executeUpdate();
-                i++;
-            }
             Statement stmt = connection.createStatement();
 
             long startTime1 = currentTimeMillis();
